@@ -25,7 +25,6 @@ public class Guestbook extends BaseEntity {
     //regdate datetime(6),
 	//engine=InnoDB  : MariaDB 엔진
 
-
 	@Id																				//primary key (gno)
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //gno bigint not null auto_increment
 	private Long gno;
@@ -38,4 +37,12 @@ public class Guestbook extends BaseEntity {
 	
 	@Column(length = 50, nullable = false)
 	private String writer;
+	
+	//새로운 값을 받아 기존에 값에 덮어씌우기
+	public void changeTitle(String title) {
+		this.title=title;
+	}
+	public void changeContent(String content) {
+		this.content=content;
+	}
 }
