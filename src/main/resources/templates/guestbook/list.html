@@ -8,6 +8,21 @@
 	
 		<h2>BootStrap CONTENT Page</h2>
 		<h4>fragment : Content</h4>
+		
+		<table>
+		<thead>gno</thead>
+			<tr th:each="dto : ${result.dtoList}">
+				<th scope="row"> [[${dto.gno}]]</th>
+				<td>[[${dto.title}]]</td>
+				<td>[[${dto.writer}]]</td>
+				<td>[[${#temporals.format(dto.regDate,'yyyy-MM-dd')}]]</td>
+			
+				
+			</tr>
+		
+		</table>
+	
+	
 	
 	</th:block>>
 

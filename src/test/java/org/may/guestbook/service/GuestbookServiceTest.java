@@ -1,5 +1,6 @@
 package org.may.guestbook.service;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.may.guestbook.dto.GuestbookDTO;
@@ -35,9 +36,14 @@ public class GuestbookServiceTest {
 		PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(1).size(10).build();
 		PageResultDTO<GuestbookDTO, Guestbook> resultDTO = service.getList(pageRequestDTO);
 		
-		for(GuestbookDTO guestbookDTO : resultDTO.getDtoList()) {
-			System.out.println(guestbookDTO);
-		}
+//		for(GuestbookDTO guestbookDTO : resultDTO.getDtoList()) {
+//			System.out.println(guestbookDTO);
+//		}
+		
+		
+		System.out.println(resultDTO);
+		//page=1, size=10, prev=false, next=false, totalPage=6, start=1, end=6,
+		//pageList=[1, 2, 3, 4, 5, 6])
 		
 	
 	}
