@@ -40,14 +40,12 @@ public class PageResultDTO<DTO, EN> {
 		//result 와 fn을 Parma으로 받아 이용해 새로운 Collectors List<DTO>에 넣기
 		//result와 fn을 mapping하여 collect list로 dtoList에 저장
 		dtoList = result.stream().map(fn).collect(Collectors.toList());
-		
 		totalPage = result.getTotalPages();	//Page<>.getTotalPages() : 전체 수량을 page size로 나눔
 		makePageList(result.getPageable());
 		
 	}
 	
 	private void makePageList(Pageable pageable) {
-		
 		this.page = pageable.getPageNumber() +1; //페이지는 0번부터 시작하기 때문
 		this.size = pageable.getPageSize();
 		

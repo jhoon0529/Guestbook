@@ -3,7 +3,6 @@ package org.may.guestbook.controller;
 import org.may.guestbook.dto.GuestbookDTO;
 import org.may.guestbook.dto.PageRequestDTO;
 import org.may.guestbook.service.GuestbookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,27 +22,26 @@ public class GuestbookController {
 	
 	private final GuestbookService service;
 	
-//	@GetMapping({"/","/list"})
-	public  String list() {
+	@GetMapping("/")
+	public  String index() {
 		log.info(">>> List Run Success...");
-		return "guestbook/list";
+		return "redirect:/guestbook/list";
 	}
 	//전체 조회
-	@GetMapping({"/","/list"})
+	@GetMapping("/list")
 	public void list(@ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO,
 							Model model) {
-		log.info(">>> List Run Success..."+pageRequestDTO);
+		log.info(">>> List Run Success..."+ pageRequestDTO);
 		//PageResultDTO
 		model.addAttribute("result", service.getList(pageRequestDTO));
 	}
 	
-	//등록페이지 출력
-	@GetMapping("/register")
-	public void resterGet() {
-		log.info(">>> Register View Page ");
-	}
-	
-	//등록 - Modal No제공 - list페이지 리턴
+	//등록 - 입력페이지
+		@GetMapping("/register")
+		public void resterGet() {
+			log.info(">>> Register View Page ");
+		}
+	//등록(저장) - Modal No제공 - list페이지 리턴
 	@PostMapping("/register")
 	public String registerPost(GuestbookDTO dto, RedirectAttributes redirectAttributes) {
 		log.info(">>> Register dto : " +dto);
@@ -62,6 +60,7 @@ public class GuestbookController {
 	public void read(long gno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
 							Model model) {
 		log.info(">>> Read gno :" + gno);
+		log.info(">>> Read Page :" + requestDTO);
 		
 		GuestbookDTO dto = service.read(gno);
 		model.addAttribute("dto",dto);
