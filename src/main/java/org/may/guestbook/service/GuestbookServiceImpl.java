@@ -1,5 +1,6 @@
 package org.may.guestbook.service;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 import org.may.guestbook.dto.GuestbookDTO;
@@ -59,5 +60,12 @@ public class GuestbookServiceImpl implements GuestbookService {
 //							}};
 						 
 		return new PageResultDTO<>(result, fn);
+	}
+
+	@Override
+	public GuestbookDTO read(long gno) {
+		Optional<Guestbook> result = repository.findById(gno);
+		
+		return result.isPresent()? entityToDto(result.get()):null;
 	}
 }

@@ -57,7 +57,7 @@ public class PageResultDTO<DTO, EN> {
 		start = tempEnd -9;	//보여지는 끝 page가 20일 경우 -9 = 11page
 		end = totalPage > tempEnd ? tempEnd :totalPage; //현재페이지가 전체랑 같으면 전체페이지
 		prev = start > 1 ;
-		next = end < 1;
+		next = totalPage > tempEnd;
 		//새로운 페이지 목록번호를 만들어 저장
 		pageList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
 	}

@@ -25,7 +25,7 @@ public class GuestbookRepositoryTests {
 	@Disabled
 	@Test	//삽입
 	void insertDummies() {
-		IntStream.rangeClosed(1, 50).forEach(i->{
+		IntStream.rangeClosed(0, 50).forEach(i->{
 		
 		Guestbook guestbook = Guestbook.builder()
 											.title("Title..."+i)

@@ -12,8 +12,8 @@ public interface GuestbookService {
 	Long register(GuestbookDTO dto);
 	//불러오기.
 	PageResultDTO<GuestbookDTO, Guestbook> getList(PageRequestDTO requestDTO);
-	
-	
+	//조회
+	GuestbookDTO read(long gno);
 	
 	
 	
@@ -45,4 +45,5 @@ public interface GuestbookService {
 									.build();
 		return dto;
 	}
+	
 }
